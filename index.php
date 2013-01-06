@@ -37,7 +37,7 @@
       <?php
         foreach ($all_trips as $trip_array) {
         echo "<table><tr><th>" . title . "</th></tr>";
-        for ($i = 0; i < max(NUM_TRIPS, count($trip_array)) {
+        for ($i = 0; i < max(NUM_TRIPS, count($trip_array); i++) {
                 echo "<tr><td>";
                 echo $trip_array[i]["departs"];
                 echo "</tr></td>";
