@@ -89,7 +89,7 @@
 
     <div class="footer">
       <a href="https://github.com/louisrli/shuttlebaby">roll your own shuttlebaby</a> 
-      by changing two lines of code (gpl v3).
+      by changing two lines of code.
       </br></br>
       <a href="mailto:louisli@college.harvard.edu">.</a>
     </div>
