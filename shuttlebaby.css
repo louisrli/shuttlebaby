@@ -1,0 +1,38 @@
+* {
+    font-family: 'Inconsolata', sans-serif;
+    background-color: black;
+    color: white;
+}
+
+#container {
+    width: 600px;
+    margin: 60px auto;
+}
+
+.footer {
+    margin: 60px auto;
+    width: 300px;
+    font-size: small;
+}
+
+.trips {
+    width: 50%;
+    margin: 0px auto;
+    display: inline-table;
+}
+
+.minortext {
+    font-size: small;
+    color: lightslategray;
+}
+
+.trips th, .trips td, .trips table {
+    text-align: center;
+}
+
+.trips th {
+    font-size: 20px;
+}
+.trips td {
+    font-size: 24px;
+}

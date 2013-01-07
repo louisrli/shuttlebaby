@@ -28,38 +28,56 @@
 <!doctype html>
 <html>
   <head>
-    <title>mather quad</title>
+    <title>shuttlebaby: mather-quad</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-    
+    <link rel="stylesheet" type="text/css" href="shuttlebaby.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+
   </head>
   
   <body>
     
-    <div>
+    <div id="container">
       <?php
-        foreach ($all_trips as $trip_array) {
-    echo "<table><tr><th>" . strtolower($trip_array['name']) . "</th></tr>";
+  foreach ($all_trips as $trip_array) {
+      echo "<table class=\"trips\"><tr><th>" . strtolower($trip_array['name']) . "</th></tr>";
 
-    if (empty($trip_array)) {
-      echo "<tr><td>";
-      echo "No trips found.";
-      echo "</tr></td>";
-    }
+      if (empty($trip_array)) {
+          echo "<tr><td>";
+          echo "No trips found.";
+          echo "</tr></td>";
+      }
 
-    for ($i = 0; $i < min($NUM_TRIPS, count($trip_array)); $i++) {
-                echo "<tr><td>";
-		$next_departure = strtotime($trip_array[$i]["departs"]);
-		echo date("H:i", $next_departure); 
+      // Iterate through the forward and backward trips
+      for ($i = 0; $i < min($NUM_TRIPS, count($trip_array)); $i++) {
+          echo "<tr><td>\n";
+          $next_departure = strtotime($trip_array[$i]["departs"]);
+          echo date("H:i", $next_departure); 
 
-		$min_from_now = round(abs($next_departure - time()) / 60);
-		echo " <span class=\"minortext\">{$min_from_now} min</span>";
+          // convert to hours if needed
+          $time_from_now = round(abs($next_departure - time()) / 60);
+          $units = "min";
 
-                echo "</tr></td>";
+          if ($time_from_now > 60) {
+              $time_from_now = round($time_from_now / 60, 1);
+              $units = "hrs";
+          }
+
+          echo "<span class=\"minortext\"> ({$time_from_now} {$units})</span>\n";
+
+          echo "</tr></td>\n";
 		
-	}
-                 echo "</table>";
-        }
-      ?>
+      }
+      echo "</table>";
+  }
+?>
+    </div>
+
+    <div class="footer">
+      <a href="https://github.com/louisrli/shuttlebaby">roll your own shuttlebaby</a> 
+      by changing two lines of code (gpl v3).
+      </br></br>
+      <a href="mailto:louisli@college.harvard.edu">.</a>
     </div>
   </body>
   
